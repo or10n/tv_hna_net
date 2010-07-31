@@ -30,7 +30,7 @@
 		</script>
 		<style type="text/css">
 			/*demo page css*/
-			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 15px 50px 15px 50px;}
 			.demoHeaders { margin-top: 2em; }
 			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
 			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
@@ -39,22 +39,26 @@
 			ul#icons span.ui-icon {float: left; margin: 0 4px;}
 
                         /* ### */
-                        #player
-                        {
+                        #td-player {
                             width: 750px;
                             border: 1px solid black;
                         }
-                        #program
-                        {
-                            margin-left: 0;
-                            padding-right: 0;
-                            border: 1px solid red;
+                        #td-program {
+                            /* border: 1px solid red; */
+                            vertical-align: top;
                         }
-                        table
-                        {
+                        table {
                             width: 100%;
-                            margin: 0;
-                            padding: 0;
+                            height: 50%;
+                        }
+                        #program {
+                            border: 1px solid #A6C9E2;
+                            border-radius: 5px;
+                            -moz-border-radius: 5px;
+                            -webkit-border-radius: 5px;
+                            margin: 0 0 0px 5px;
+                            padding: 15px 15px 15px 55px;
+                            height: 560px;
                         }
 
 		</style>	
@@ -96,12 +100,14 @@
 			<div id="tabs-1">
                             <table>
                                 <tr>
-                                    <td id="player">
+                                    <td id="td-player">
                                         <div style="width: 730px; height: 580px; background-color: #aaaaaa; margin: auto; ">
                                         </div>
                                     </td>
-                                    <td id="program">
-                                        
+                                    <td id="td-program">
+                                        <div id="program">
+                                            <?php $channel = '721'; include "parse.php"; ?>
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
