@@ -106,7 +106,7 @@
                                     </td>
                                     <td id="td-program">
                                         <div id="program">
-                                            <?php $channel = '721'; include "parse.php"; ?>
+                                            <?php $channel = '721'; require_once "parse.php"; ?>
                                         </div>
                                     </td>
                                 </tr>
