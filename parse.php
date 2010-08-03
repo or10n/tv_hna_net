@@ -2,8 +2,11 @@
 
 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />";
 
-$channel = '721';
-$day = floor(date(U)/60/60/24);
+$channel = (int)$_GET['channel'];
+$page = (int)$_GET['page'];
+$day = (int)$_GET['date'];
+
+//$day = floor(date(U)/60/60/24);
 $f = fopen("http://tv.yandex.ru/?day=$day&hour=6&period=24&channel=$channel&mode=print", "r");
 
 $pattern = '{

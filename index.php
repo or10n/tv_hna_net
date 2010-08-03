@@ -25,6 +25,10 @@
                                 $.datepicker.setDefaults($.datepicker.regional['ru']);
                 		$("#datepicker").datepicker($.datepicker.regional['ru']);
                                 $('#datepicker').datepicker('option', {dateFormat: 'dd/mm/yy'});
+                                
+//$.datepicker.parseDate('DD, MM d, yy', 'Samedi, Juillet 14, 2007', {shortYearCuroff: 20, dayNamesShort:
+        //$.datepicker.regional['fr'].dayNamesShort, dayNames: $.datepicker.regional['fr'].dayNames, monthNamesShort:
+            //$.datepicker.regional['fr'].monthNamesShort, monthNames: $.datepicker.regional['fr'].monthNames});
 
 				//hover states on the static widgets
 				$('#dialog_link, ul#icons li').hover(
@@ -35,8 +39,30 @@
 			});
 
                         $(document).ready(function(){         
-                            $('#datepicker').click(function(){
-                                $('#content').load('parse.php');
+
+                                $date = $("#datepicker").datepicker("getDate");
+
+                                var d = new Date();
+                                d.setTime(Date.parse($date));
+
+                                $day = Math.floor(d.getTime()/1000/24/60/60);
+                                //alert($day);
+
+                                $('#content1').load('parse.php?page=1&channel=721&date='+$day);
+                                $('#content2').load('parse.php?page=2&channel=721&date='+$day);
+
+                        $('#datepicker').click(function(){
+
+                                $date = $("#datepicker").datepicker("getDate");
+
+                                var d = new Date();
+                                d.setTime(Date.parse($date));
+
+                                $day = Math.floor(d.getTime()/1000/24/60/60);
+                                //alert($day);
+
+                                $('#content1').load('parse.php?page=1&channel=721&date='+$day);
+                                $('#content2').load('parse.php?page=2&channel=721&date='+$day);
                             })
                         });
 
@@ -118,11 +144,19 @@
                                     </ul>
                                     <div id="tabs-1">
                                         <div id="program">
-                                            <table><tr><td style="width: 30px;"><img src="/images/721.gif"></td><td>
-                                                <?php $channel = '721'; $page = '1'; include "parse.php"; //в скрипте выводится </td><td> после 36 строки ?>
-                                                    </td><td>
-                                                <?php $channel = '721'; $page = '2'; include "parse.php"; //в скрипте выводится </td><td> после 36 строки ?>
-                                            </td></tr></table>
+                                            <table>
+                                              <tr>
+                                                <td style="width: 30px;">
+                                                    <img src="/images/721.gif">
+                                                </td>
+                                                <td id="content1">
+                                                    <?php //$channel = '721'; $page = '1'; include "parse.php"; //в скрипте выводится </td><td> после 36 строки ?>
+                                                </td>
+                                                <td id="content2">
+                                                    <?php //$channel = '721'; $page = '2'; include "parse.php"; //в скрипте выводится </td><td> после 36 строки ?>
+                                                </td>
+                                              </tr>
+                                            </table>
                                         </div>
                                     </div>
                                     <div id="tabs-2"></div>
